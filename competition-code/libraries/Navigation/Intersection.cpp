@@ -2,8 +2,8 @@
 
 using namespace moveOptions;
 
-
-Intersection::Intersection(Movement* move, String name = "def inter name") { 
+//Jedrick how the fuck do these pointers work
+Intersection::Intersection(Movement* move, String name = "def inter name") {
 	// initialize state pairs
 	stateA = new IntersectionStatePair;
 	stateB = new IntersectionStatePair;
@@ -57,7 +57,7 @@ IntersectionStart::IntersectionStart(Movement* move, String name) : Intersection
 	|                                 |
 	+---------------------------------+
 	*/
-	// This intersection CANNOT be approached from B 
+	// This intersection CANNOT be approached from B
 	// setup states To/From A
 	stateA->To -> setLeftTurn(Left180, stateB->To);
 	stateA->To -> setRightTurn(Right180, stateB->To);
@@ -202,9 +202,9 @@ IntersectionIV::IntersectionIV(Movement* move, String name) : Intersection(move,
                             |
                             |
                   B ----------------- D
-                            
-                            
-                            
+
+
+
                             C
     */
 	// setup state To A
@@ -237,13 +237,13 @@ IntersectionV::IntersectionV(Movement* move, String name) : Intersection(move, n
     /*
 
                             A
-                            
-                            
-                            
+
+
+
                   B ----------------- D
-                            
-                            
-                            
+
+
+
                             C
     */
 	// setup state To A
@@ -281,13 +281,13 @@ IntersectionDropToken::IntersectionDropToken(Movement* move, String name) : Inte
 
 
                 B
-    
+
     */
     // There are only 2 states A and B that matter here
 	// No turns allowed, can only go back to previous tate
 	// Transitions from A From to A To
 	stateA->From -> setApproach(MoveIntoDropPosition);
 	stateA->From -> setTransitionTo(stateB->To);
-	
+
 	stateB->To->setBackwardState(stateA->To);
 }

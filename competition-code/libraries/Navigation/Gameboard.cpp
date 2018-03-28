@@ -1,3 +1,7 @@
+/*
+
+*/
+
 #include "Gameboard.h"
 
 
@@ -222,7 +226,7 @@ void Gameboard::initializeBoard() {
 			at3and225->setIfToken(true);
 			at3and315->setIfToken(true);
 			break;
-		}	
+		}
 	}
 }
 

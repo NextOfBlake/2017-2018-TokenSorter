@@ -1,3 +1,6 @@
+/*
+
+*/
 #include "LineIntersection.h"
 
 LineIntersection::LineIntersection()
@@ -18,7 +21,7 @@ LineIntersection::LineIntersection(int pin) {
 	middlePin = pin;
 }
 
-
+//raw data for sensor bar
 String LineIntersection::getArrayDataInString() {
 	String lineData = "";
 	int bit_value;
@@ -32,12 +35,12 @@ String LineIntersection::getArrayDataInString() {
 	return lineData;
 }
 
-
+//true if middle is on a line
 bool LineIntersection::getMiddleState() {
 	return analogRead(middlePin) >= middleThreshold;
 }
 
-
+//creates a variable called data_sum_vector which is
 int8_t LineIntersection::getArrayDataSum() {
 	String line_data = getArrayDataInString();
 	int8_t data_sum_vector = 0;
@@ -53,7 +56,7 @@ int8_t LineIntersection::getArrayDataSum() {
 
 
 
-
+//generate lineData w/ middle pin so that string is 9 bits long
 String LineIntersection::getFullArrayInString() {
 	String lineData = "";
 	density = 0;
@@ -76,13 +79,14 @@ String LineIntersection::getFullArrayInString() {
 	return lineData;
 }
 
-
+//calculating position variable more negetive when lastFullReading is lower and more postive versa
 int LineIntersection::getLinePosition(bool getNewData) {
 	int position = 0;
-	// get new data if requested
+	// get new data if requested then it updates the sensor values
 	if (getNewData) {
 		getFullArrayInString();
 	}
+	//if middle is online then check to see if left or right is too
 	if (lastFullReading[4] == ON_LINE) {
 		// if on the line, only worry about closest two sensors
 		if (lastFullReading[3] == ON_LINE) position -= 1;
@@ -116,7 +120,7 @@ int LineIntersection::getLinePosition(bool getNewData) {
 	return lastPosition;
 }
 
-
+//if density is higher than 5 then return true
 bool LineIntersection::getIfAtPerpendicular() {
 	int required_density = 5;
 	return getDensity() >= required_density;
@@ -142,4 +146,3 @@ bool LineIntersection::getIfAtRightY() {
 bool LineIntersection::getIfAtLeftY() {
 	return getIfAtPerpendicular();
 }
-

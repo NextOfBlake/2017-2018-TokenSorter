@@ -9,9 +9,11 @@ Navigation::Navigation(int round_n, Movement& move)
 	gameboard = new Gameboard(round_n, movement); //create gameboard
 	//IntersectionStart* start = new IntersectionStart(movement, "test intersection");
 	//currentState = start->getStateA()->To;//gameboard->getStartState(); //set current state as start state
+
+	//Blake says getStartState() is not yet defined
+
 	currentState = gameboard->getStartState(); //set current state as start state
 }
-
 
 Navigation::~Navigation()
 {

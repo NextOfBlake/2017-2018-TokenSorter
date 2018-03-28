@@ -1,3 +1,15 @@
+/*
+Movement contains methods:
+performTurn which if given a turn type "45" will turn the robot 45 degrees
+performApproach which given approachType will preform a specified approach
+performBackwardApproach given approachType will preform a specified approach
+
+Missing:
+
+	approach functions still undifined
+
+	dance moves?!
+*/
 #include "Movement.h"
 
 
@@ -86,7 +98,7 @@ void Movement::performApproach(Approach approachType) {
 }
 
 void Movement::approachFollowUntilPerpendicularLine() {
-	
+
 }
 
 void Movement::performBackwardApproach(BackwardApproach approachType) {
